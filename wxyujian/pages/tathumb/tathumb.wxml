@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view>
+  <view class="tishi" wx:if="{{items.length == 0}}">
+    ta还没有上传图片
+  </view>
+  <view class= "card"  wx:for = "{{items}}"wx:key="">
+    <view  data-url="{{item.imageurl}}" bindtap = "onItemClick">
+       <image class= "image" mode="aspectFill" src="{{item.imageurl}}"/>
+    </view>
+  </view>
+</view>

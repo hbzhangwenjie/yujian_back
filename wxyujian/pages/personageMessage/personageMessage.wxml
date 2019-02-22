@@ -1,0 +1,74 @@
+<view class="userContent">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">头像</text>
+    </view>
+    <view class="rightContent" style="flex-direction:row;" bindtap="setavatarUrl">
+      <image class="userImage" src="{{avatarUrl}}" bindtap="chooseImage" />
+      <image class="rightRaw" mode="aspectFit" src="../../images/angleRight.png"></image>
+    </view>
+  </view>
+  <view class="divice"></view>
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">性别</text>
+    </view>
+    <view class="rightContent" bindtap="setMale" style="flex-direction:row;">
+      <text wx:if="{{gender==1}}" class="textRight">男</text>
+      <text wx:else class="textRight">女</text>
+      <image class="rightRaw" mode="aspectFit" src="../../images/angleRight.png"></image>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">昵称</text>
+    </view>
+    <view class="rightContent" bindtap="setNick" style="flex-direction:row;">
+      <text class="textRight">{{nickName}}</text>
+      <image class="rightRaw" mode="aspectFit" src="../../images/angleRight.png"></image>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">学校</text>
+    </view>
+    <view class="rightContent" bindtap="setSchool" style="flex-direction:row;">
+      <text class="textRight">{{school}}</text>
+      <image class="rightRaw" mode="aspectFit" src="../../images/angleRight.png"></image>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">职业/年级</text>
+    </view>
+    <view class="rightContent" bindtap="setProfession" style="flex-direction:row;">
+      <text class="textRight">{{profession}}</text>
+      <image class="rightRaw" mode="aspectFit" src="../../images/angleRight.png"></image>
+    </view>
+  </view>
+  <view class="divice"></view>
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">个人介绍</text>
+    </view>
+    <view class="rightContent" bindtap="setIintroduce" style="flex-direction:row;">
+      <text class="textRight">点击修改</text>
+      <image class="rightRaw" mode="aspectFit" src="../../images/angleRight.png"></image>
+    </view>
+  </view>
+  <view class="divLine"></view>
+
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">相册</text>
+    </view>
+    <view class="rightContent" bindtap="addImage" style="flex-direction:row;">
+      <text class="textRight">点击上传</text>
+      <image class="rightRaw" mode="aspectFit" src="../../images/angleRight.png"></image>
+    </view>
+  </view>
+    <view class="divLine"></view>
+</view>

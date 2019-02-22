@@ -1,0 +1,35 @@
+<view class='news'>
+ <!-- <view class='xiahuaxian1 xiahuaxia'></view>
+  <view class='new_top_txt'>您正在与{{nickName}}进行沟通</view>
+  -->
+  <view class="historycon">
+    <scroll-view scroll-y="true" scroll-top="{{100}}" class="history" wx:for="{{items}}" wx:key=''>
+      <view>
+        <text class='time'>{{item.time}}</text>
+      </view>
+      <block wx:if="{{item.is_show_right ==1}}">
+        <view class='my_right'>
+          <view class='page_row'>                        
+            <text class='my_txt '>{{item.message}}</text>   
+             <view class='sanjiao my'></view>    
+              <image class='new_img' src='{{user.avatarUrl}}'></image> 
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='you_left'>
+          <view class='page_row'>
+            <image class='new_img' src='{{item.avatarUrl}}'></image>
+              <view  class='sanjiao you'></view>
+              <text  class='you_txt'>{{item.message}}</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+<view class='hei' id="hei"></view>
+<view  class="sendmessage">
+  <input type="emoji" bindinput="bindChange" confirm-type="done" value='{{sendmsg}}'/>
+  <button  catchtap="add" >发送</button>
+</view>

@@ -1,0 +1,3 @@
+<view class="errView">
+<image class="error" src="../../images/404.jpg"></image>
+</view>

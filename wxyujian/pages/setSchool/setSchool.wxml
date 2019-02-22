@@ -1,0 +1,13 @@
+<view class="userContent">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">学校</text>
+    </view>
+    <view class="rightContent" style="flex-direction:row;">
+      <input class="textRight colorText" type="text" placeholder-class="color" placeholder="{{school}}" bindinput="valueInput" />
+    </view>
+  </view>
+  <view class="btn-view">
+    <button class="sureBtn" bindtap="btn_save">保存</button>
+  </view>
+</view>

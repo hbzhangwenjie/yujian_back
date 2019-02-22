@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="wrap-title">选择照片：</view>
+  <view class="wrap-content">
+
+    <!--循环体-->
+    <block wx:for="{{imgs}}" wx:for-index="index" wx:for-item="i" wx:key="*this">
+      <view class="wrap-single-img">
+        <view class="wrap-single-img-del" bindtap="delImg" data-index="{{index}}">删除</view>
+        <view class="wrap-thumbimg">
+          <image binderror="imageLoadErr" mode="scaleToFill" class="wrap-thumbimg-image" src="{{thumbImgs[index] || imgs[index]}}" bindtap="previewImg" data-url="{{thumbImgs[index] || imgs[index]}}" data-index="{{index}}"></image>
+        </view>
+      </view>
+    </block>
+    <view class="wrap-single-img" wx:if="{{imgs.length < maxImg}}" bindtap="addImg">
+      <view class="wrap-thumbimg">
+        <view class="wrap-upload-bt"></view>
+      </view>
+    </view>
+    <view wx:if="{{imgs.length >= maxImg}}" class="tishi">相册上限为5张！</view>
+  </view>
+  <button class="wrap-button" bindtap="save" type="primary" loading="{{saveIng}}" disabled="{{saveIng}}" hover-class="other-button-hover">完成</button>
+</view>

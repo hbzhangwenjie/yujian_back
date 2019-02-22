@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yingzi.guanguai.dao.GuggestionMapper">
+  <resultMap id="BaseResultMap" type="com.yingzi.guanguai.model.Guggestion">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+    <result column="suggestion" jdbcType="LONGVARCHAR" property="suggestion" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from suggestion
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yingzi.guanguai.model.Guggestion">
+    insert into suggestion ( userId, suggestion
+      )
+    values ( #{userid,jdbcType=BIGINT}, #{suggestion,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yingzi.guanguai.model.Guggestion">
+    update suggestion
+    set userId = #{userid,jdbcType=BIGINT},
+      suggestion = #{suggestion,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, userId, suggestion
+    from suggestion
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, userId, suggestion
+    from suggestion
+  </select>
+</mapper>

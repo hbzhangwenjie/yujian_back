@@ -1,0 +1,66 @@
+/* pages/component/personageMessage/personageMessage.wxss */
+.flex-wrp {
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+}
+.divLine{
+  border-bottom: 2rpx solid #eee;
+}
+.userContent {
+  height: 100%;
+  width: 100%;
+}
+
+.leftContent {
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+   color: #787878;
+}
+
+.rightContent {
+  color:#787878;
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.userImage {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
+  display: block;
+  float: right;
+}
+
+.textRight {
+  font-size: 40rpx;
+  overflow: hidden;
+  white-space: nowrap; /* 不换行 */
+  text-align: right;
+}
+
+.textLeft {
+  align-content: center;
+  align-self: left;
+  text-align: center;
+  display: inline-block;
+}
+
+.divice {
+  height: 20rpx;
+  width: 100%;
+  background-color: #eee;
+}
+
+.rightRaw {
+  height: 40rpx;
+  width: 40rpx;
+  align-self: center;
+  margin-left: 20rpx;
+}

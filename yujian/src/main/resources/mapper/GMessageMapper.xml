@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yingzi.guanguai.dao.GMessageMapper">
+  <resultMap id="BaseResultMap" type="com.yingzi.guanguai.model.GMessage">
+    <id column="messageId" jdbcType="BIGINT" property="messageid" />
+    <result column="sessionId" jdbcType="BIGINT" property="sessionid" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+    <result column="toUserId" jdbcType="BIGINT" property="touserid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="message" jdbcType="LONGVARCHAR" property="message" />
+    <result column="isRead" jdbcType="TINYINT" property="isRead" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from g_message
+    where messageId = #{messageid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yingzi.guanguai.model.GMessage">
+    insert into g_message (sessionId, userId,
+      toUserId, create_time, message,isRead
+      )
+    values ( #{sessionid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT},
+      #{touserid,jdbcType=BIGINT}, now(), #{message,jdbcType=LONGVARCHAR},
+      0
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yingzi.guanguai.model.GMessage">
+    update g_message
+    set sessionId = #{sessionid,jdbcType=BIGINT},
+      userId = #{userid,jdbcType=BIGINT},
+      toUserId = #{touserid,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      message = #{message,jdbcType=LONGVARCHAR}
+    where messageId = #{messageid,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select messageId, sessionId, userId, toUserId, create_time, message,isRead,update_time
+    from g_message
+    where messageId = #{messageid,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select messageId, sessionId, userId, toUserId, create_time, message,isRead,update_time
+    from g_message
+  </select>
+  <select id="selectBySessionId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select messageId, sessionId, userId, toUserId, create_time, message,isRead,update_time
+    from g_message
+    where
+    sessionId = #{gSessionId,jdbcType=BIGINT}
+    order by create_time ASC
+  </select>
+
+  <select id="countUnRead"  resultType="java.lang.Integer">
+  select count(1) from g_message where isRead =0 and toUserId =#{userId} and sessionId = #{gSessionId}
+  </select>
+<update id="readMessage">
+  update g_message
+  set isRead=1
+  where
+  toUserId =#{userId} and sessionId = #{gSessionId}
+</update>
+</mapper>

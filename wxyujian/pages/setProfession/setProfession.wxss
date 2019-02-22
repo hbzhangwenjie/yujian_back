@@ -1,0 +1,77 @@
+/* pages/user/setAddress/setAddress.wxss */
+
+.userContent {
+  height: 100%;
+  width: 100%;
+}
+
+.flex-wrp {
+  min-height: 100rpx;
+  margin-top: 10rpx;
+  padding-bottom: 10rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  display: flex;
+  border-bottom: 2rpx solid #eee;
+}
+
+.colorText{
+  color:black;
+  font-weight:normal;
+}
+.color{
+  color:#c3c3c3;
+}
+
+.leftContent {
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ln{
+  height: fit-content;
+  min-height: 200rpx;
+}
+.rightContent {
+  color: #c3c3c3;
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.textRight {
+  font-size: 40rpx;
+  white-space:normal;
+  word-wrap:break-word;/*强制换行**/
+  width: 100%;
+  text-align: left;
+}
+
+.textLeft {
+ width: fit-content;
+ height: fit-content;
+ margin-top: auto;
+ margin-bottom: auto;
+  font-size: 35rpx;
+  align-content: center;
+  align-self: left;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn-view{
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 100rpx;
+}
+
+.sureBtn {
+  width: 200rpx;
+  background-color: #50afff;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 40rpx;
+}

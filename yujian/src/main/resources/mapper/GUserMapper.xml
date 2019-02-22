@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yingzi.guanguai.dao.GUserMapper">
+    <resultMap id="BaseResultMap" type="com.yingzi.guanguai.model.GUser">
+        <id column="userId" jdbcType="BIGINT" property="userId"/>
+        <result column="unionId" jdbcType="VARCHAR" property="unionId"/>
+        <result column="openId" jdbcType="VARCHAR" property="openId"/>
+        <result column="nickName" jdbcType="VARCHAR" property="nickName"/>
+        <result column="gender" jdbcType="TINYINT" property="gender"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="profession" jdbcType="VARCHAR" property="profession"/>
+        <result column="school" jdbcType="VARCHAR" property="school"/>
+        <result column="avatarUrl" jdbcType="VARCHAR" property="avatarUrl"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="introduce" jdbcType="LONGVARCHAR" property="introduce"/>
+        <result column="passWord" jdbcType="VARCHAR" property="passWord"/>
+        <result column="eMail" jdbcType="VARCHAR" property="eMail"/>
+        <result column="maxImage" jdbcType="INTEGER" property="maxImage"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from g_user
+    where userId = #{userId,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="userId" parameterType="com.yingzi.guanguai.model.GUser">
+    insert into g_user ( unionId, openId,
+      nickName, gender, city,
+      province, country, profession,
+      school,avatarUrl, create_time,update_time, introduce,passWord,eMail,maxImage
+      )
+    values ( #{unionId,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR},
+      #{nickName,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, #{city,jdbcType=VARCHAR},
+      #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR},
+      #{school,jdbcType=VARCHAR},#{avatarUrl,jdbcType=VARCHAR}, now(),now(), #{introduce,jdbcType=LONGVARCHAR},#{passWord,jdbcType=VARCHAR},#{eMail,jdbcType=VARCHAR},5
+      )
+  </insert>
+    <update id="updateById" parameterType="com.yingzi.guanguai.model.GUser">
+        update g_user
+        set
+        <if test="maxImage!=0">
+            maxImage = if((maxImage - #{maxImage,jdbcType=INTEGER})&lt; 0,0,(maxImage - #{maxImage,jdbcType=INTEGER}))
+        </if>
+        <if test="gender!=null">
+            gender = #{gender,jdbcType=TINYINT}
+        </if>
+        <if test="nickName!=null">
+            nickName = #{nickName,jdbcType=VARCHAR}
+        </if>
+        <if test="profession!=null">
+            profession = #{profession,jdbcType=VARCHAR}
+        </if>
+        <if test="school!=null">
+            school = #{school,jdbcType=VARCHAR}
+        </if>
+        <if test="avatarUrl!=null">
+            avatarUrl= #{avatarUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="introduce!=null">
+            introduce = #{introduce,jdbcType=LONGVARCHAR}
+        </if>
+        where userId = #{userId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yingzi.guanguai.model.GUser">
+    update g_user
+    set unionId = #{unionId,jdbcType=VARCHAR},
+      openId = #{openId,jdbcType=VARCHAR},
+      nickName = #{nickName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      avatarUrl= #{avatarUrl,jdbcType=VARCHAR}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      introduce = #{introduce,jdbcType=LONGVARCHAR}
+    where userId = #{userId,jdbcType=BIGINT}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select userId, unionId, openId, nickName, gender, city, province, country, profession,
+    school,avatarUrl,create_time, introduce,passWord,eMail,maxImage
+    from g_user
+    where userId = #{userId,jdbcType=BIGINT}
+  </select>
+    <select id="selectByOpenid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select userId, unionId, openId, nickName, gender, city, province, country, profession,
+    school,avatarUrl,create_time, introduce,passWord,eMail,maxImage
+    from g_user
+    where openId = #{openId,jdbcType=BIGINT}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select userId, unionId, openId, nickName, gender, city, province, country, profession,
+    school,avatarUrl,create_time, introduce,passWord,eMail,maxImage
+    from g_user
+  </select>
+    <select id="showUser" resultMap="BaseResultMap">
+    select userId, unionId, openId, nickName, gender, city, province, country, profession,
+    school,avatarUrl,create_time, introduce,passWord,eMail,maxImage
+    from g_user
+  </select>
+    <update id="online" parameterType="java.lang.Long">
+    update g_user
+    set
+      update_time = now()
+    where userId = #{userId,jdbcType=BIGINT}
+  </update>
+
+    <select id="login" resultMap="BaseResultMap">
+        select userId, unionId, openId, nickName, gender, city, province, country, profession,
+    school,avatarUrl,create_time, introduce,passWord,eMail,maxImage from g_user where
+        passWord = #{passWord}
+        and
+        eMail = #{eMail}
+    </select>
+    <select id="findByMail"  resultMap="BaseResultMap">
+    select userId, unionId, openId, nickName, gender, city, province, country, profession,
+    school,avatarUrl,create_time, introduce,passWord,eMail,maxImage
+    from g_user
+    where eMail = #{mail}
+  </select>
+<update id="addImageMax">
+      update g_user
+    set
+      maxImage=if((maxImage &lt; 5),maxImage+1,maxImage)
+    where userId = #{userId,jdbcType=BIGINT}
+</update>
+</mapper>

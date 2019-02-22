@@ -1,0 +1,13 @@
+<view class="userContent">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="leftContent">
+      <text class="textLeft">意见反馈</text>
+    </view>
+    <view class="rightContent" style="flex-direction:row;">
+      <textarea class="textRight colorText" type="text" placeholder-class="color" placeholder="您的建议" bindinput="updateData"  />
+    </view>
+  </view>
+  <view class="btn-view">
+    <button class="sureBtn" bindtap="btn_save">保存</button>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<view class="login-container">
+    <view>
+    <view class="wrap-title">上传头像：</view>
+    <view class="wrap-content">
+
+      <!--循环体-->
+      <view class="wrap-single-img" wx:if="{{img}}">
+        <view class="wrap-thumbimg">
+          <image binderror="imageLoadErr" mode="scaleToFill" class="wrap-thumbimg-image" src="{{img}}" bindtap="previewImg" data-url="{{img}}" data-index="{{index}}"></image>
+        </view>
+      </view>
+
+      <view class="wrap-single-img" bindtap="addImg">
+        <view class="wrap-thumbimg">
+          <view class="wrap-upload-bt"></view>
+        </view>
+      </view>
+    </view>
+    </view>
+    <view>
+      <button bindtap="doReg"  type="primary"  class="wrap-button" > 更新头像 </button>
+    </view>
+</view>

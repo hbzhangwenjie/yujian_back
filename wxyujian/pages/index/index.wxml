@@ -1,0 +1,14 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="../../images/guanguai.jpg"           background-size="cover"></image>
+    <text class="userinfo-nickname">遇见·光谷</text>
+  </view>
+
+  <button wx:if="{{canIUse}}" class="center-loading"open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+<view wx:else>请升级微信版本</view>
+  <view class="foot">
+    <text>Copyright©2017-2020 yujianguanggu.com</text>
+  </view>
+  <text class="foot-text">影子</text>
+</view>

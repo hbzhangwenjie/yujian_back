@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yingzi.guanguai.dao.GSessionMapper">
+    <resultMap id="BaseResultMap" type="com.yingzi.guanguai.model.GSession">
+        <id column="sessionId" jdbcType="BIGINT" property="sessionid"/>
+        <result column="userIdOne" jdbcType="BIGINT" property="useridone"/>
+        <result column="userIdTwo" jdbcType="BIGINT" property="useridtwo"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from g_session
+    where sessionId = #{sessionid,jdbcType=BIGINT}
+  </delete>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="sessionid" parameterType="com.yingzi.guanguai.model.GSession">
+
+    insert into g_session (sessionId, userIdOne, userIdTwo, 
+      update_time)
+    values (#{sessionid,jdbcType=BIGINT}, #{useridone,jdbcType=BIGINT}, #{useridtwo,jdbcType=BIGINT}, 
+      now())
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.yingzi.guanguai.model.GSession">
+    update g_session
+    set userIdOne = #{useridone,jdbcType=BIGINT},
+      userIdTwo = #{useridtwo,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where sessionId = #{sessionid,jdbcType=BIGINT}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select sessionId, userIdOne, userIdTwo, update_time
+    from g_session
+    where sessionId = #{sessionid,jdbcType=BIGINT}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select
+    from g_session
+  </select>
+    <select id="selectByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select sessionId, userIdOne, userIdTwo, update_time
+    from g_session
+    where
+    userIdOne = #{userId,jdbcType=BIGINT}
+    or
+    userIdTwo= #{userId,jdbcType=BIGINT}
+  </select>
+    <select id="selectByUserAndToUser" resultType="java.lang.Long">
+    select sessionId
+    from g_session
+    where
+    abs(userIdOne - userIdTwo) =#{sub}
+    AND
+    userIdOne + userIdTwo =#{add};
+  </select>
+</mapper>

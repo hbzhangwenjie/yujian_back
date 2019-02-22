@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    
+    "pages/uploadava/uploadava",
+    "pages/tathumb/tathumb",
+    "pages/register/register",
+    "pages/thumb/thumb",
+    "pages/image/image",
+    "pages/myimage/myimage",
+    "pages/error/error",
+    "pages/user/user",
+    "pages/upload/upload",
+    "pages/online/online",
+    "pages/chat/wechat",
+    "pages/message/message",
+    "pages/setGender/setGender",
+    "pages/personageMessage/personageMessage",
+    "pages/setProfession/setProfession",
+    "pages/setSchool/setSchool",
+    "pages/setIntroduce/setIntroduce",
+    "pages/setGuggestion/setGuggestion",
+    "pages/setNick/setNick"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "#fff"
+  },
+  "networkTimeout": {
+    "request": 6000,
+    "downloadFile": 10000
+  },
+  "weweb": {
+    "requestProxy": "/remoteProxy"
+  }
+}

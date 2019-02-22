@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yingzi.guanguai.dao.GImageMapper">
+  <resultMap id="BaseResultMap" type="com.yingzi.guanguai.model.GImage">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+    <result column="imageUrl" jdbcType="VARCHAR" property="imageurl" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="isDel" jdbcType="TINYINT" property="isDel" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from g_image
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yingzi.guanguai.model.GImage">
+    insert into g_image (userId, imageUrl,create_time
+      )
+    values ( #{userid,jdbcType=BIGINT}, #{imageurl,jdbcType=VARCHAR},now()
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yingzi.guanguai.model.GImage">
+    update g_image
+    set userId = #{userid,jdbcType=BIGINT},
+      imageUrl = #{imageurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT} and isDel =0
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, userId, imageUrl
+    from g_image
+    where id = #{id,jdbcType=BIGINT} and isDel =0
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, userId, imageUrl
+    from g_image
+    where  isDel =0
+  </select>
+
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select id, userId, imageUrl
+    from g_image
+    where
+    userId = #{userId} and isDel = 0
+  </select>
+  <update id="deleteByUserIdAndUrl" parameterType="com.yingzi.guanguai.model.GImage">
+    update  g_image
+    set isDel = 1
+    where userId = #{userid,jdbcType=BIGINT} and  imageUrl = #{imageurl,jdbcType=VARCHAR}
+  </update>
+</mapper>

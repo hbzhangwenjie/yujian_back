@@ -1,0 +1,43 @@
+<view class="flex-item  demo-text-2">
+
+  <view>
+    <image class="img" src="{{avatarUrl}}" />
+  </view>
+</view>
+<view class="interval"></view>
+
+<view class="o">
+  <button type='default' size='mini' class='myfont' bindtap='bindTapsetUserInfo'> 完善信息 </button>
+</view>
+
+
+<view class="p">
+  <button type='default' size='mini' class='myfont' bindtap="bindGuggestion"> 意见反馈</button>
+</view>
+
+<view class="interval"></view>
+<view class="o">
+  <button type='default' size='mini' class='myfont' bindtap='goshowSeesion'> 查看留言 </button>
+</view>
+
+<view class="p">
+  <button  type='default' size='mini' class='myfont' bindtap="goThumb">我的相册</button>
+</view>
+
+<!--
+<view class="o">
+  <button type='default' size='mini' class='myfont'> 私信系统 </button>
+</view>
+<view class="p">
+  <button type='default' size='mini' class='myfont'> 已推嘉宾</button>
+</view>
+
+<view class="k">
+  <button type='primary' size='mini' class='myfont'> 最近上线</button>
+</view>
+<view class="interval"></view>
+-->
+<view class="interval"></view>
+<view class="k">
+  <button type='primary' size='mini' class='myfont' bindtap='goshowUser'>  遇  ·  见 </button>
+</view>

@@ -1,0 +1,65 @@
+/* pages/index/index.wxss */
+
+.container {
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   padding: 200rpx 0;
+   box-sizing: border-box;
+}
+
+.userinfo {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.userinfo-avatar {
+   width: 128rpx;
+   height: 128rpx;
+   margin: 20rpx;
+   border-radius: 50%;
+}
+
+.userinfo-nickname {
+   color: #aaa;
+}
+
+.center-loading {
+   border: 1rpx solid #c3c3c3;
+   border-radius: 12rpx;
+   background-color: #F0F0F0;
+   width: 80%;
+   height: 80rpx;
+   line-height: 80rpx;
+   margin-top: 150rpx;
+   text-align: center;
+   font-size: 36rpx;
+   font-weight: 500;
+   font-family : 黑体, 'New York';
+}
+
+
+.foot {
+   width: 100%;
+   position: fixed;
+   bottom: 40rpx;
+   font-size: 28rpx;
+   line-height: 30rpx;
+   text-align: center;
+   color: #c3c3c3;
+   margin-bottom: 15rpx;
+}
+
+.foot-text {
+   width: 100%;
+   padding-left: 20rpx;
+   bottom: 15rpx;
+   position: fixed;
+   line-height: 30rpx;
+   text-align: center;
+   font-size: 28rpx;
+   color: blue;
+}

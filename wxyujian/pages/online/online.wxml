@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view>
+
+  <view class="card" wx:for="{{items}}" wx:key="userId">
+    <view class="li" >
+      <image data-url="{{item.avatarUrl}}" class="image" mode="aspectFill" src="{{item.avatarUrl}}" />
+      <view class="introduces" wx:if="{{item.introduces==null}}">他什么都没有说，很神秘</view>
+      <view class="introduces" wx:else>{{item.introduces}}</view>
+    </view>
+    <view class="title1" wx:if="{{item.nickName==null}}">匿名</view>
+    <view class="title1" wx:else>{{item.nickName}}</view>
+    <view class="title2" wx:if="{{item.school==null}}">社会大学</view>
+    <view class="title2" wx:else>{{item.school}}</view>
+    <view class="title3" wx:if="{{item.profession==null}}">自由职业</view>
+    <view class="title3" wx:else>{{item.profession}}</view>
+    <view class="allview">
+        <image class="title4" wx:if="{{item.gender==1}}" src="../../images/man.jpg"></image>
+    <image class="title4" wx:else src="../../images/woman.jpg"></image>
+    <image data-name="{{item.nickName}}" data-id="{{item.userId}}" data-img="{{item.avatarUrl}}" bindtap="onItemClick" class="title5"src="../../images/msg.jpg"></image>
+      <image  data-id="{{item.userId}}"  bindtap="onImageClick" class="title6"src="../../images/thumb.png"></image>
+    </view>
+  </view>
+
+</view>

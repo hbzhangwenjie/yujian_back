@@ -1,0 +1,46 @@
+<loading hidden="{{hidden}}">
+  加载中...
+</loading>
+<toast hidden="{{toast1Hidden}}" bindchange="toast1Change">
+  {{toastText}}
+</toast>
+<scroll-view scroll-y="true">
+  <view class="tishi" wx:if="{{list.length == 0}}">
+    没有留言
+  </view>
+
+  <view class="item-avatar-md" wx:for="{{list}}" wx:for-item="i" wx:key="sessionId" wx:for-index="index" data-index="{{index}}" data-name="{{i.otherName}}" data-id="{{i.otherUserId}}"  data-img="{{i.otherAvatarUrl}}" 
+  data-session ="{{i.sessionId}}"bindtap="goPage">
+    <!--<view catchlongtap="modalTap" style="width:100%;">-->
+    <view class="marks" wx:if="{{i.unRead>0}}">
+      <text>{{i.unRead}}</text>
+    </view>
+    <image src="{{i.otherAvatarUrl}}"></image>
+    <view class="item-text">
+      <view class="text_box">
+        <view class="flex">
+          <text class="title">{{i.otherName}}</text>
+        </view>
+        <view class="flex">
+          <text class="message">{{i.lastMessage}}</text>
+        </view>
+      </view>
+    </view>
+    <!--<view class="item-time padding_half">
+            <text class="message">{{i.time}}</text>
+          </view>
+     </view>-->
+
+  </view>
+  <!--<view class="weui-grids">
+    <view class="weui-grid"><view class="weui-btn weui-btn_primary">1111</view></view>
+    <view class="weui-grid"><view class="weui-grid_label">1</view></view>
+    <view class="weui-grid"><view class="weui-grid_label">1</view></view>
+  </view>-->
+  <!--<view class="list list-inset">
+    <view class="item item-input">
+      <text class="icon ion-search placeholder-icon"></text>
+      <input placeholder="Search" />
+    </view>
+  </view>-->
+</scroll-view>
